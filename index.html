@@ -1,0 +1,85 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grading System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 class="main-heading">GRADING SYSTEM ASSIGNMENT</h1>
+    <div class="container">
+        <div id="inp">
+            <h1 class="js-heading">Grading System In JS</h1>
+            <label for="english">English</label>
+            <input type="number" id="english">
+            <br>
+            <br>
+            <label for="maths">Maths</label>
+            <input type="number" id="maths">
+            <br>
+            <br>
+            <label for="physics">Physics</label>
+            <input type="number" id="physics">
+            <br>
+            <br>
+            <label for="chemistry">Chemistry</label>
+            <input type="number" id="chemistry">
+            <br>
+            <br>
+            <label for="computer">Computer</label>
+            <input type="number" id="computer">
+            <br>
+            <br>
+            <div id="btn-div">
+                <button id="btn">Calculate grade</button>
+            </div>
+        </div>
+        <div id="output">
+            <div id="total-div">
+                <h1 class="heading">Total</h1>
+                <h3 id="total"></h3>
+            </div>
+            <div id="average-div">
+                <h1 class="heading">Average</h1>
+                <h3 id="average"></h3>
+            </div>
+            <div id="grade-div">
+                <h1 class="heading">Grade</h1>
+                <h3 id="grade"></h3>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("btn").addEventListener("click", function () {
+            const eng = parseInt(document.getElementById("english").value);
+            const math = parseInt(document.getElementById("maths").value);
+            const phy = parseInt(document.getElementById("physics").value);
+            const chem = parseInt(document.getElementById("chemistry").value);
+            const computer = parseInt(document.getElementById("computer").value);
+            if (eng < 0 || eng > 100 || math < 0 || math > 100 || phy < 0 || phy > 100 || chem < 0 || chem > 100 || computer < 0 || computer > 100) {
+                return alert("Please Enter marks in range of 0 to 100")
+                document.getElementById("total").innerHTML = ""
+                document.getElementById("average").innerHTML = ""
+                document.getElementById("grade").innerHTML = ""
+            }
+            const total = eng + math + phy + chem + computer
+            const average = total / 5
+            document.getElementById("total").innerHTML = `Total Marks : ${total}`
+            document.getElementById("average").innerHTML = `Your Average marks are : ${average}`
+            const grade = (total / 500) * 100
+            if (eng <= 35 || math <= 35 || phy <= 35 || chem <= 35 || computer <= 35) {
+                document.getElementById("grade").innerHTML = `You Got F Grade`
+            }
+            else {
+                document.getElementById("grade").innerHTML = `You Got ${Math.ceil(grade)} %`
+            }
+
+            console.log(typeof (eng), typeof (math), typeof (phy), typeof (chem), typeof (computer));
+        })
+    </script>
+</body>
+
+</html>
